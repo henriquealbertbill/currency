@@ -1,0 +1,54 @@
+<html>
+<head>
+</head>
+<body>
+
+<!-- START CODE Attention! Do not modify this code; -->
+<script>
+    function updateAndSaveAmount() {
+        var amInputValue = document.getElementById("amountInput").value;
+        if (amInputValue) {
+            // Salvar o valor no localStorage
+            localStorage.setItem('savedAmount', amInputValue);
+
+            // Recarregar a página
+            location.reload();
+        }
+    }
+    
+    // Inicialização
+    var savedValue = localStorage.getItem('savedAmount');
+    if (savedValue) {
+        window.am = parseFloat(savedValue);
+    } else {
+        window.am = 15; // valor padrão
+    }
+    
+    var fm = "BRL";
+    var to = "EUR,USD";
+    var tz = "-3";
+    var sz = "1x164";
+    var lg = "pt";
+    var st = "primary";
+    var cd = 1;
+</script>
+<script src="//currencyrate.today/exchangerates" id="exchangeScript"></script>
+
+<div>
+    <label for="amountInput">Digite o valor: </label>
+    <input type="number" id="amountInput" value="15">
+    <button onclick="updateAndSaveAmount()">Atualizar e Salvar Valor</button>
+</div>
+<div style="text-align:right"><a href="https://currencyrate.today">CurrencyRate</a></div>
+<!-- Attention! Do not modify this code; END CODE -->
+
+<script>
+    // Atualizar o valor do input com o valor salvo (se houver)
+    var savedValue = localStorage.getItem('savedAmount');
+    if (savedValue) {
+        document.getElementById("amountInput").value = savedValue;
+    }
+</script>
+
+</body>
+</html>
